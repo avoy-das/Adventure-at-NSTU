@@ -9,7 +9,7 @@ public class Main {
         window1.setTitle("Adventure at NSTU");
         GamePanel gamePanel = new GamePanel();
         window1.add(gamePanel);
-        //window1.setPreferredSize(new Dimension(1200,600));
+        //window1.setPreferredSize(new Dimension(1200,600));ll
         window1.pack();
         window1.setLocationRelativeTo(null);
         window1.setVisible(true);
