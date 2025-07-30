@@ -10,7 +10,6 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
         window1.add(gamePanel);
         //window1.setPreferredSize(new Dimension(1200,600));
-        //testing comment
         window1.pack();
         window1.setLocationRelativeTo(null);
         window1.setVisible(true);

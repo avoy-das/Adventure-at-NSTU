@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import main.GamePanel;
+import main.SoundPlayer;
 
 public class Mission4 extends JFrame {
 
@@ -16,6 +17,7 @@ public class Mission4 extends JFrame {
                         "With full syntax\n"
 
         );
+        SoundPlayer.play("/resources/Sounds/Start.wav");
         message.setEditable(false);
         message.setBackground(null);
         message.setBorder(null);
@@ -52,6 +54,7 @@ public class Mission4 extends JFrame {
             String userCode = codeInput.getText();
             if (isValidFullCProgram(userCode)) {
                 JOptionPane.showMessageDialog(this, "Mission Complete!");
+                SoundPlayer.play("/resources/Sounds/Success.wav");
                 gp.missionActive = false;
                 gp.keyH.upPressed = false;
                 gp.keyH.downPressed = false;
@@ -60,6 +63,7 @@ public class Mission4 extends JFrame {
                 dispose();
             } else {
                 feedback.setText("Incorrect or incomplete C code.\nTry again.");
+                SoundPlayer.play("/resources/Sounds/Fail.wav");
             }
         });
     }

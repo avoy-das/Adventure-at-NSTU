@@ -106,13 +106,13 @@ public class TileManager {
 
             tile[19] = new Tile();
             tile[19].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/resources/tiles/location.png")));
-            tile[19].collision = true;
+            tile[19].collision = false;
   
         }
         catch (IOException e){
-
         }
     }
+
 
     public void loadMapObjects() {
         try {

@@ -23,6 +23,5 @@ public class Mission2 extends JFrame {
         gp.keyH.leftPressed = false;
         gp.keyH.rightPressed = false;
 
-
     }
 }

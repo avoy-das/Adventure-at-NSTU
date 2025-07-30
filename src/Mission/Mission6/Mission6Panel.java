@@ -36,7 +36,7 @@ public class Mission6Panel extends JPanel implements Runnable {
     boolean missionFailed = false;
     boolean missionEnded = false;
 
-    int goalX = 23 * 48;  // Adjust to Malek Hall tile
+    int goalX = 23 * 48;
     int goalY = 14 * 48;
 
     public Mission6Panel(GamePanel gp) {

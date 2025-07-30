@@ -1,5 +1,7 @@
 package Mission.Mission2;
 import main.GamePanel;
+import main.SoundPlayer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,7 +24,7 @@ public class Mission2Panel extends JPanel implements ActionListener {
                 "The first thing you see when you enter the campus is our logo.\nDo you remember what the logo looks likes?\nLets assemble it.",
                 "Mission 2",
                 JOptionPane.INFORMATION_MESSAGE);
-        
+        SoundPlayer.play("/resources/Sounds/Start.wav");
         loadImages();
         createButtons();
     }
@@ -47,7 +49,6 @@ public class Mission2Panel extends JPanel implements ActionListener {
         for (int i = 0; i < buttons.size(); i++) {
             add(buttons.get(i));
         }
-
     }
 
     @Override
@@ -63,7 +64,8 @@ public class Mission2Panel extends JPanel implements ActionListener {
             firstClick = false;
 
             if (checkWin()) {
-                JOptionPane.showMessageDialog(this, "You remember the logo , congratulations!");
+                JOptionPane.showMessageDialog(this, "Congratulations!\nYou assembled it");
+                SoundPlayer.play("/resources/Sounds/Success.wav");
                 SwingUtilities.getWindowAncestor(this).dispose();
             }
         }

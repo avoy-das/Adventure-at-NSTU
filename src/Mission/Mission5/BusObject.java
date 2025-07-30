@@ -15,8 +15,8 @@ public class BusObject {
         this.image = image;
         this.hitbox = new Rectangle(worldX, worldY, 48, 48); // tileSize
     }
-    public void moveRight(int speed) {
-        worldX += speed;
-        hitbox.x = worldX;
-    }
+//    public void moveRight(int speed) {
+//        worldX += speed;
+//        hitbox.x = worldX;
+//    }
 }

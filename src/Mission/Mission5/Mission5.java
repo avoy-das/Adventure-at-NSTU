@@ -1,6 +1,8 @@
 package Mission.Mission5;
 
 import main.GamePanel;
+import main.SoundPlayer;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +14,6 @@ public class Mission5 {
     BusObject bus;
     int stopX = 38 * 48;
     int stopY = 94 * 48;
-
     int busSpeed = 2;
     long lastMoveTime;
     int moveInterval = 100;
@@ -47,6 +48,7 @@ public class Mission5 {
         JOptionPane.showMessageDialog(null,
                 "Hurry! Catch the bus before it reaches the stop!",
                 "Mission 5", JOptionPane.INFORMATION_MESSAGE);
+        SoundPlayer.play("/resources/Sounds/Start.wav");
 
         gp.keyH.upPressed = false;
         gp.keyH.downPressed = false;
@@ -115,6 +117,7 @@ public class Mission5 {
     public void missionSuccess() {
         active = false;
         JOptionPane.showMessageDialog(null, "You caught the bus in time!\nMission Complete.");
+        SoundPlayer.play("/resources/Sounds/Success.wav");
         gp.keyH.upPressed = false;
         gp.keyH.downPressed = false;
         gp.keyH.leftPressed = false;
@@ -126,6 +129,7 @@ public class Mission5 {
     public void missionFail() {
         active = false;
         JOptionPane.showMessageDialog(null, "You missed the bus!\nMission Failed.");
+        SoundPlayer.play("/resources/Sounds/Fail.wav");
         gp.keyH.upPressed = false;
         gp.keyH.downPressed = false;
         gp.keyH.leftPressed = false;

@@ -22,7 +22,7 @@ public class CollisionChecker {
         int entityBottomRow = entityBottomWorldY / tileSize;
 
         int tileNum1, tileNum2;
-
+//predicts the collision
         switch (entity.direction) {
             case "up":
                 entityTopRow = (entityTopWorldY - entity.speed) / tileSize;

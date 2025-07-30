@@ -37,7 +37,6 @@ public class GamePanel extends JPanel implements Runnable {
         setDoubleBuffered(true);
         setFocusable(true);
         addKeyListener(keyH);
-
         player.cChecker = cChecker;
         missionManager = new MissionManager(this);
     }
@@ -87,8 +86,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (mission3 != null && mission3.active) {
             mission3.draw(g2);
-
-
             boolean prevState = player.isInMission;
             player.isInMission = false;
             player.draw(g2);
@@ -99,7 +96,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (mission5 != null && mission5.active) {
             mission5.draw(g2);
-
             boolean prev = player.isInMission;
             player.isInMission = false;
             player.draw(g2);

@@ -10,8 +10,7 @@ public class Guard {
     public BufferedImage image;
     public long lastShotTime = 0;
     public int shootInterval = 2000;
-
-    public int patrolDistance = 96; // in pixels (e.g., 2 tiles)
+    public int patrolDistance = 96;
     private int startX, startY;
     private boolean movingForward = true;
 

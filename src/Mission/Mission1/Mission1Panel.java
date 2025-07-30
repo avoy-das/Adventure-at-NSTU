@@ -18,7 +18,7 @@ public class Mission1Panel extends JPanel implements Runnable {
     public int FPS = 60;
     Thread gameThread;
     int endX ,endY;
-    int timeLimitSeconds = 200;
+    int timeLimitSeconds = 100;
     long startTime;
     boolean missionComplete = false;
     boolean missionFailed = false;
@@ -64,10 +64,11 @@ public class Mission1Panel extends JPanel implements Runnable {
 
         JOptionPane.showMessageDialog(this,
                 "It's annual sports day ," +
-                        "\nyou have to reach from Auditorium to Library building in 60 seconds." +
+                        "\nyou have to reach from Auditorium to Library building in 100 seconds." +
                         "\nBut the road is a maze.\nCan you reach within time?",
                 "Mission 1",
                 JOptionPane.INFORMATION_MESSAGE);
+        SoundPlayer.play("/resources/Sounds/Start.wav");
         keyH.upPressed = false;
         keyH.downPressed = false;
         keyH.leftPressed = false;
@@ -104,6 +105,7 @@ public class Mission1Panel extends JPanel implements Runnable {
 
             missionComplete = true;
             JOptionPane.showMessageDialog(this, "Congratulations!You have completed the mission!");
+            SoundPlayer.play("/resources/Sounds/Success.wav");
             gp.player.setPosition(returnX, returnY);
 
             gp.player.isInMission = false;
@@ -119,6 +121,7 @@ public class Mission1Panel extends JPanel implements Runnable {
         if (elapsedTime >= timeLimitSeconds) {
             missionFailed = true;
             JOptionPane.showMessageDialog(this, "Time up\nBetter luck next time");
+            SoundPlayer.play("/resources/Sounds/Fail.wav");
             gp.player.isInMission = false;
             gp.missionActive = false;
 

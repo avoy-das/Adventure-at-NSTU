@@ -3,6 +3,7 @@ package Mission.Mission3;
 import entity.BagObject;
 import main.GamePanel;
 import entity.Player;
+import main.SoundPlayer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,8 +18,8 @@ public class Mission3 {
     int totalBags = 10;
     int bagsCollected = 0;
     long startTime;
-    int timeLimitSeconds = 500;
-    int endX = 40 * 48; // destination
+    int timeLimitSeconds = 150;
+    int endX = 40 * 48;
     int endY = 32 * 48;
 
     public boolean active = true;
@@ -26,8 +27,6 @@ public class Mission3 {
     public Mission3(GamePanel gp) {
         this.gp = gp;
         gp.missionActive = true;
-
-//      gp.player.setPosition(30 * 48, 40 * 48);
         gp.player.getPlayerImage();
         gp.player.isInMission = true;
 
@@ -38,6 +37,7 @@ public class Mission3 {
                 "The bus will be leaving shortly and it's getting crowded.\nCollect " + totalBags + " bags in 60 seconds.\nThen go to garage to reserve seats for your friends!",
                 "Mission 3",
                 JOptionPane.INFORMATION_MESSAGE);
+        SoundPlayer.play("/resources/Sounds/Start.wav");
 
         gp.keyH.upPressed = false;
         gp.keyH.downPressed = false;
@@ -61,12 +61,12 @@ public class Mission3 {
                     new Point(95, 61),
                     new Point(85, 78),
                     new Point(34, 69),
-                    new Point(43, 68),
+                    new Point(16, 33),
                     new Point(36, 70),
                     new Point(38, 67)
             );
 
-            Collections.shuffle(validPositions); // Randomize the list
+            Collections.shuffle(validPositions);
 
             for (int i = 0; i < totalBags; i++) {
                 Point p = validPositions.get(i);
@@ -81,10 +81,8 @@ public class Mission3 {
 
     public void update() {
         if (!active) return;
-
         checkBagCollection();
         checkMissionEnd();
-
         int elapsed = (int) ((System.currentTimeMillis() - startTime) / 1000);
         if (elapsed > timeLimitSeconds) {
             active = false;
@@ -136,14 +134,15 @@ public class Mission3 {
 
         int timeLeft = Math.max(0, timeLimitSeconds - (int)((System.currentTimeMillis() - startTime) / 1000));
         g2.drawString("Time Left: " + timeLeft + "s", 20, 30);
-
     }
 
     public void endMission(boolean success) {
         if (success) {
             JOptionPane.showMessageDialog(null, "You collected all the bags!\nMission Complete!");
+            SoundPlayer.play("/resources/Sounds/Success.wav");
         } else {
             JOptionPane.showMessageDialog(null, "Time's up!\nMission Failed.");
+            SoundPlayer.play("/resources/Sounds/Fail.wav");
         }
         gp.player.isInMission = false;
         gp.missionActive = false;
